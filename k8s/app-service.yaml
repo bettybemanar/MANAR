@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-service
+spec:
+  selector:
+    app: app
+  type: NodePort
+  ports:
+    - protocol: TCP
+      port: 80        # المنفذ داخل الحاوية
+      targetPort: 80  # منفذ التطبيق
+      nodePort: 30080 # منفذ الوصول من خارج الكلاستر
