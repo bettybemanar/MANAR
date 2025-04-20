@@ -20,3 +20,5 @@ spec:
               value: "root"
             - name: MYSQL_DATABASE
               value: "app_db"
+          ports:
+            - containerPort: 3306
