@@ -21,6 +21,11 @@ CREATE TABLE IF NOT EXISTS users (
 )
 """)
 
+cursor.execute("""
+INSERT IGNORE INTO users (username, password)
+VALUES (%s, %s)
+""", ("admin", "passtest"))
+
 print("✅ تم إنشاء قاعدة البيانات والجداول")
 
 cursor.close()
