@@ -11,8 +11,8 @@ config = {
 conn = mysql.connector.connect(**config)
 cursor = conn.cursor()
 
-cursor.execute("CREATE DATABASE IF NOT EXISTS myapp")
-cursor.execute("USE myapp")
+cursor.execute("USE railway")
+
 
 cursor.execute("""
 CREATE TABLE IF NOT EXISTS users (
