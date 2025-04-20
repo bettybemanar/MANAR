@@ -6,6 +6,9 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-install pdo pdo_mysql \
     && pip3 install mysql-connector-python
 
+RUN pip3 install bcrypt
+
+
 # نسخ ملفات PHP
 COPY src/ /var/www/html/
 
