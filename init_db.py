@@ -22,13 +22,14 @@ CREATE TABLE IF NOT EXISTS users (
 )
 """)
 
-# ✅ تشفير كلمة المرور
-hashed_pw = bcrypt.hashpw("passtest".encode('utf-8'), bcrypt.gensalt())
+# تشفير كلمة المرور
+hashed_pw = bcrypt.hashpw("passtest".encode(), bcrypt.gensalt())
 
 cursor.execute("""
-INSERT IGNORE INTO users (username, password)
+INSERT INTO users (username, password)
 VALUES (%s, %s)
-""", ("admin", hashed_pw.decode('utf-8')))
+""", ("admin", hashed_pw.decode()))
+
 
 print("✅ تم إنشاء جدول المستخدمين وإضافة مستخدم admin بكلمة مرور مشفّرة")
 
