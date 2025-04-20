@@ -1,10 +1,11 @@
 import mysql.connector
+import os
 
 config = {
-    "host": getenv("MYSQLHOST") ,
-    "user": getenv("MYSQLUSER"),
-    "password": getenv("MYSQLPASSWORD"),
-    "port": getenv("MYSQLPORT")
+    "host": os.environ["MYSQL_HOST"],
+    "user": os.environ["MYSQL_USER"],
+    "password": os.environ["MYSQL_PASSWORD"],
+    "port": int(os.environ["MYSQL_PORT"])
 }
 
 conn = mysql.connector.connect(**config)
