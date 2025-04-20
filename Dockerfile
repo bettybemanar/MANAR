@@ -1,11 +1,16 @@
-# استخدام PHP مع Apache
 FROM php:8.0-apache
 
-# تحديث الحزم وتثبيت الامتدادات المطلوبة
-RUN docker-php-ext-install pdo pdo_mysql
+# تثبيت Python و mysql connector
+RUN apt-get update && apt-get install -y python3 python3-pip \
+    && pip3 install mysql-connector-python
 
-# نسخ ملفات المشروع إلى مجلد الاستضافة في Apache
+# نسخ ملفات PHP
 COPY src/ /var/www/html/
 
-# فتح المنفذ 80
+# نسخ سكربت الإنشاء
+COPY init_db.py /init_db.py
+
+# شغّل السكربت ثم شغّل PHP
+CMD python3 /init_db.py && apache2-foreground
+
 EXPOSE 80
